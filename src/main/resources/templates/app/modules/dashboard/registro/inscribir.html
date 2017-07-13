@@ -1,0 +1,56 @@
+<form class="form-horizontal" ng-submit="adicionarRegistro()">
+<div class="ngdialog-message">
+	<h2 class="text-center">Inscripcion de estudiantes</h2>
+  <fieldset>
+     <div class="form-group">
+     	<h3 class="text-center">{{estudiante.nombre}}</h3>
+     	<h3 class="text-center" th:text="${gestion}"></h3>
+     </div>
+     <input type="hidden" th:value="${gestion}" name="gestion" ng-model="reg.gestion"/>
+     <input type="hidden" value="" name="estudiante" ng-model="reg.id_est"/>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Colegio</label>
+      <div class="col-lg-7">
+        <select class="form-control" id="colegio" ng-model="reg.id_col" ng-options="col.id as col.nombre for col in colegios">
+          <option value = "">Seleccione un colegio</option>
+        </select>
+      </div>
+      <div class="col-lg-3">
+      	<button class="btn btn-primary" type="button" ng-click="adicionarColegio()"><i class="fa fa-plus"></i></button>
+      	<button class="btn btn-info" type="button" ng-click="refrescarColegios()"><i class="fa fa-refresh"></i></button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Ciclo</label>
+      <div class="col-lg-7">
+        <select class="form-control" id="ciclo" ng-model="reg.id_ci" ng-options="ci.id as ci.nombre for ci in ciclos">
+          <option value="">Seleccione un ciclo</option>
+        </select>
+      </div>
+      <div class="col-lg-3">
+      	<button class="btn btn-primary" type="button" ng-click="adicionarCiclo()"><i class="fa fa-plus"></i></button>
+      	<button class="btn btn-info" type="button" ng-click="refrescarCiclos()"><i class="fa fa-refresh"></i></button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Curso</label>
+      <div class="col-lg-7">
+        <select class="form-control" id="curso" ng-model="reg.id_cur" ng-options="c.id as c.nombre for c in cursos">
+          <option value="">Seleccione un curso</option>
+        </select>
+      </div>
+      <div class="col-lg-3">
+      	<button class="btn btn-primary" type="button" ng-click="adicionarCurso()"><i class="fa fa-plus"></i></button>
+      	<button class="btn btn-info" type="button" ng-click="refrescarCursos()"><i class="fa fa-refresh"></i></button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="ngdialog-buttons mt">
+	<button type="submit" class="ngdialog-button ngdialog-button-primary"
+		>Guardar</button>
+	<button type="reset" class="ngdialog-button ngdialog-button-default"
+		>
+		resetear</button>
+</div>
+</form>

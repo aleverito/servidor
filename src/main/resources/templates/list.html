@@ -1,0 +1,136 @@
+<div class="generic-container">
+    <div class="panel panel-default">
+    	<form name="myForm">
+	        <div>Recortar Imagen y Subir</div>
+	        <button ngf-select ng-model="ctrl.picFile" accept="image/*" class='btn btn-primary'>
+	            Elegir  imagen</button>
+	        <div ngf-drop ng-model="ctrl.picFile" ngf-pattern="image/*"
+	             class="cropArea">
+	            <img-crop image="ctrl.picFile  | ngfDataUrl"                 
+	            result-image="ctrl.croppedDataUrl" ng-init="ctrl.croppedDataUrl=''"
+	            area-type='square' change-on-fly="false" result-image-quality='0.1' result-image>
+	            </img-crop>
+	        </div>
+	        <div>
+	            <img ng-src="{{ctrl.croppedDataUrl}}" />
+	        </div>
+	        <button ng-click="ctrl.upload(ctrl.croppedDataUrl, ctrl.picFile.name)" class="btn btn-primary">Cargar</button> 
+	            
+	        <span class="progress" ng-show="ctrl.progress >= 0">
+	          <div style="width:{{ctrl.progress}}%" ng-bind="ctrl.progress + '%'"></div>
+	        </span>
+	        <span ng-show="result">Cargado Exitoso</span>
+	        <span class="err" ng-show="ctrl.errorMsg">{{ctrl.errorMsg}}</span>
+	    </form>
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">USUARIOS</span></div>
+		<div class="panel-body">
+	        <div class="formcontainer">
+	            <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
+	            <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
+	            <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal" enctype='multipart/form-data'>
+	                <input type="hidden" ng-model="ctrl.user.id" />
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="rude">RUDE</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.rude" id="rude" class="username form-control input-sm" placeholder="Enter your rude" required ng-pattern="ctrl.onlyNumbers"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="ci">Ci</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.ci" id="ci" class="username form-control input-sm" placeholder="Enter your ci" required ng-pattern="ctrl.DNI"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="uname">Nombre</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.nombre" id="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
+	                        </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="ap">Ap</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.ap" id="ap" class="form-control input-sm" placeholder="Enter your Ap." required ng-minlength="3"/>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="am">Am</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.am" id="am" class="form-control input-sm" placeholder="Enter your am." required ng-minlength="3"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="fono">Telefono</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.user.telefono" id="fono" class="form-control input-sm" placeholder="Enter your telefono." required ng-pattern="ctrl.onlyNumbers"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="foto">Foto</label>
+	                        <div class="col-md-7">
+	                            <input type="file" ng-model="ctrl.user.foto" id="foto" class="form-control input-sm" placeholder="Enter your image."/>
+	                        </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="form-actions floatRight">
+	                        <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+	                        <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+	                    </div>
+	                </div>
+	            </form>
+    	    </div>
+		</div>	
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">List of Users </span></div>
+		<div class="panel-body">
+			<div class="table-responsive">
+		        <table class="table table-hover">
+		            <thead>
+			            <tr>
+			                <th>CI</th>
+			                <th>RUDE</th>
+			                <th>NOMBRE</th>
+			                <th>Ap. PATERNO</th>
+			                <th>Ap. MATERNO</th>
+			                <th>TELEFONO</th>
+			                <th width="100"></th>
+			                <th width="100"></th>
+			            </tr>
+		            </thead>
+		            <tbody>
+		            <tr ng-repeat="u in ctrl.getAllUsers()">
+		                <td>{{u.ci}}</td>
+		                <td>{{u.rude}}</td>
+		                <td>{{u.nombre}}</td>
+		                <td>{{u.ap}}</td>
+		                <td>{{u.am}}</td>
+		                <td>{{u.telefono}}</td>
+		                <td><button type="button" ng-click="ctrl.editUser(u.id)" class="btn btn-success custom-width">Edit</button></td>
+		                <td><button type="button" ng-click="ctrl.removeUser(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+		            </tr>
+		            </tbody>
+		        </table>		
+			</div>
+		</div>
+    </div>
+</div>

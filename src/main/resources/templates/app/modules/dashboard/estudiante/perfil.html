@@ -1,0 +1,14 @@
+<form name="myForm">
+	<div>Recortar Imagen y Subir</div>
+	<button ngf-select ng-model="ctrl.picFile" accept="image/*" class='btn btn-primary'>Elegir imagen</button>
+	<div ngf-drop ng-model="ctrl.picFile" ngf-pattern="image/*"	class="cropArea">
+		<img-crop image="ctrl.picFile  | ngfDataUrl" result-image="ctrl.croppedDataUrl" ng-init="ctrl.croppedDataUrl=''"
+			area-type='square' change-on-fly="false" result-image-quality='0.1'result-image> </img-crop>
+	</div>
+	<div><img ng-src="{{ctrl.croppedDataUrl}}" /></div>
+	<button ng-click="ctrl.upload(ctrl.croppedDataUrl, ctrl.picFile.name)" class="btn btn-primary">Cargar</button>
+	<span class="progress" ng-show="ctrl.progress >= 0">
+		<div style="width: {{ctrl.progress" ng-bind="ctrl.progress + '%'"></div>
+	</span>
+	<span ng-show="result">Cargado Exitoso</span> <span class="err" ng-show="ctrl.errorMsg">{{ctrl.errorMsg}}</span>
+</form>

@@ -1,0 +1,29 @@
+<div class="ngdialog-message">
+	<h3>
+		<i class='fa fa-user'></i> <span th:text='${user.nombre +" "+user.ap+" "+user.am}' class='text-center'></span>
+	</h3>
+	<form name="myForm">
+		
+		<button ngf-select="" ng-model="ctrlUpload.picFile" accept="image/*"	class='btn progress-button btn-sm btn-warning' ng-change='$window.alert();'>Cargar <i class='fa fa-upload'></i></button>
+		<button th:attr="ng-click='ctrlUpload.upload(ctrlUpload.croppedDataUrl, ctrlUpload.picFile.name,'+${user.id}+')'" class="btn progress-button {{guardarDisable}} btn-sm btn-primary" ng-disabled='guardarDisable' >Guardar <i class='fa fa-save'></i></button>
+		<a th:attr="ng-click='download('+${user.id}+')'" class='btn progress-button {{downloadDisable}} btn-sm btn-primary'  >Descargar <i class='fa fa-download'></i></a>
+		<div ngf-drop="" ng-model="ctrlUpload.picFile" ngf-pattern="image/*" class="cropArea">
+			<img-crop image="ctrlUpload.picFile  | ngfDataUrl" 
+				result-image="ctrlUpload.croppedDataUrl" ng-init="ctrlUpload.croppedDataUrl=''" 
+				area-type='square' change-on-fly="false" result-image-quality='0.1' on-load-done='hacer();' 
+				class='pull-right' style='width:100%;height:100%;'> </img-crop>
+		</div>
+		<div>
+			<img  ng-src="{{ctrlUpload.croppedDataUrl}}" class='img-thumbnail'/>
+		</div>
+<!-- 		<span class="progress" ng-show="ctrlUpload.progress >= 0"> -->
+<!-- 			<div style="width: {{ctrlUpload.progress}}px;background-color: #0b1115;" ng-bind="ctrlUpload.progress + '%'"></div> -->
+<!-- 		</span>  -->
+<!-- 		<span ng-show="ctrlUpload.result">Cargado Exitoso</span>  -->
+<!-- 		<span class="err" ng-show="ctrlUpload.errorMsg">{{ctrlUpload.errorMsg}}</span> -->
+    </form>
+</div>
+<div class="ngdialog-buttons">
+	<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="ok()">Aceptar</button>
+	<!-- <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="cancel()">Cancel</button> -->
+</div>

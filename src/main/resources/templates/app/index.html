@@ -1,0 +1,102 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+  <title>Angular Edunote</title>
+<!--   <base href="/"> -->
+  <meta name="description" content="Angular Bootstrap Dashboard"/>
+  <meta name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link th:href="@{/plugins/angular-material/angular-material.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/animate.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link th:href="@{/css/site.css}" rel="stylesheet" />
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/css/nga.all.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/themes.css}" rel="stylesheet" />
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/bootstrap-slider/slider.css}" rel="stylesheet" />
+    <link th:href="@{/css/flexslider.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/ng-dialog/css/ngDialog.min.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/ng-dialog/css/ngDialog-theme-default.min.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/ng-dialog/css/ngDialog-theme-flat.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/owl-carousel/owl.theme.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/owl-carousel/owl.transitions.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/owl-carousel/owl.carousel.css}" rel="stylesheet" />
+    <link th:href="@{/plugins/angular-toastr/angular-toastr.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />	
+</head>
+<body ng-app="app" class="hold-transition sidebar-mini isScroll{{theme}} {{theme}} {{layout}}">
+	<div flash-message="5000"></div>
+    <ui-view></ui-view>
+    
+    <!--Scripts-->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/plugins/bootstrap-slider/bootstrap-slider.js}"></script>
+	
+	<!-- Angular Material Library -->
+	<script th:src="@{/js/angular.min.js}"></script>
+	<script th:src="@{/js/angular-ui-router-min.js}"></script>
+	<script th:src="@{/js/angular-resource.js}"></script>
+	<script th:src="@{/js/angular-material.min.js}"></script>
+	<script th:src="@{/js/angular-aria.min.js}"></script>
+	<script th:src="@{/js/angular-messages.min.js}"></script>
+	<script th:src="@{/js/angular-animate.min.js}"></script>
+	<script th:src="@{/js/smart-table.js}"></script>
+	<script th:src="@{/js/sortable.js}"></script>
+	<!-- 	Plugins -->
+	<script th:src="@{/plugins/knob/jquery.knob.js}"></script>
+	<script th:src="@{/plugins/Chart.min.js}"></script>
+	<script th:src="@{/plugins/owl-carousel/owl.carousel.min.js}"></script>
+	<script th:src="@{/plugins/angular-toastr/angular-toastr.tpls.min.js}"></script>
+	<script th:src="@{/plugins/ng-dialog/js/ngDialog.min.js}"></script>
+	<script th:src="@{/js/angular-flash.js}"></script>
+	<script th:src="@{/js/angular-sanitize.js}"></script>
+	<script th:src="@{/js/ui-bootstrap-tpls-0.13.0.min.js}"></script>
+	<script th:src="@{/js/lib/ng-file-upload-shim.min.js}"></script>
+    <script th:src="@{/js/lib/ng-file-upload.min.js}"></script>
+    <script th:src="@{/js/lib/ng-img-crop.min.js}"></script>
+    <script th:src="@{/js/lib/localforage.min.js}"></script>
+    <script th:src="@{/js/lib/ngStorage.min.js}"></script>
+	<!--Common-->
+	<script th:src="@{/app/common/config.js}"></script>
+	<!--main app-->
+	<script th:src="@{/app/app.js}"></script>
+	<script th:src="@{/app/common/appCtrl.js}"></script>
+	<script th:src="@{/app/services/apiService.js}"></script>
+	<script th:src="@{/app/factory/uploadImage.js}"></script>
+	<!--Login Module-->
+	<script th:src="@{/app/modules/login/loginMgmt.js}"></script>
+	<script th:src="@{/app/modules/login/loginService.js}"></script>
+	<script th:src="@{/app/modules/login/loginCtrl.js}"></script>
+
+	<!--Dashboard Module-->
+	<script th:src="@{/app/modules/dashboard/dashboardApplication.js}"></script>
+	<script th:src="@{/app/modules/dashboard/dashboardService.js}"></script>
+	<!-- Controllers -->
+	<script th:src="@{/app/modules/dashboard/controllers/websites.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/about.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/achievements.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/contact.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/education.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/experience.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/gallery.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/home.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/portfolio.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/recent.js}"></script>
+	<script th:src="@{/app/modules/dashboard/controllers/skills.js}"></script>
+	<script th:src="@{/app/modules/dashboard/estudiante/Controller.js}"></script>
+	<script th:src="@{/app/modules/dashboard/estudiante/Service.js}"></script>
+	<script th:src="@{/app/modules/dashboard/maestro/Controller.js}"></script>
+	<script th:src="@{/app/modules/dashboard/maestro/Service.js}"></script>
+	<script th:src="@{/app/modules/dashboard/colegio/Service.js}"></script>
+	<script th:src="@{/app/modules/dashboard/ciclo/Service.js}"></script>
+	<script th:src="@{/app/modules/dashboard/curso/Service.js}"></script>
+	<script th:src="@{/app/modules/dashboard/registro/Service.js}"></script>
+	
+</body>
+</html>
